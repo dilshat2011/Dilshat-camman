@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan o'tish</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            border: '#334155'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-100 min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+
+    <div class="w-full max-w-md bg-dark-card rounded-2xl shadow-2xl p-8 border border-dark-border mb-8">
+        <h2 class="text-3xl font-bold mb-6 text-center text-white">Ro'yxatdan o'tish</h2>
+        
+        <form id="registrationForm" class="space-y-5">
+            <div>
+                <label for="firstName" class="block text-sm font-medium text-gray-300 mb-1">Ism</label>
+                <input type="text" id="firstName" class="w-full px-4 py-3 rounded-lg bg-dark-bg border border-dark-border focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition duration-200 text-white" placeholder="Ismingizni kiriting">
+                <p id="firstNameError" class="text-red-400 text-xs mt-1 hidden">Ism kiritish majburiy.</p>
+            </div>
+            
+            <div>
+                <label for="lastName" class="block text-sm font-medium text-gray-300 mb-1">Familiya</label>
+                <input type="text" id="lastName" class="w-full px-4 py-3 rounded-lg bg-dark-bg border border-dark-border focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition duration-200 text-white" placeholder="Familiyangizni kiriting">
+                <p id="lastNameError" class="text-red-400 text-xs mt-1 hidden">Familiya kiritish majburiy.</p>
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Elektron pochta</label>
+                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-dark-bg border border-dark-border focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition duration-200 text-white" placeholder="example@gmail.com">
+                <p id="emailError" class="text-red-400 text-xs mt-1 hidden">Iltimos, to'g'ri elektron pochta kiriting.</p>
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Parol</label>
+                <input type="password" id="password" class="w-full px-4 py-3 rounded-lg bg-dark-bg border border-dark-border focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition duration-200 text-white" placeholder="Kamida 6 ta belgi">
+                <p id="passwordError" class="text-red-400 text-xs mt-1 hidden">Parol kamida 6 ta belgidan iborat bo'lishi kerak.</p>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg">
+                Ro'yxatdan o'tish
+            </button>
+        </form>
+    </div>
+
+    <!-- Table to show registered users -->
+    <div class="w-full max-w-4xl bg-dark-card rounded-2xl shadow-xl p-6 border border-dark-border hidden fade-in" id="tableContainer">
+        <h3 class="text-xl font-bold mb-4 text-white">Ro'yxatdan o'tgan foydalanuvchilar</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-dark-border text-gray-400">
+                        <th class="py-3 px-4 font-medium w-16">#</th>
+                        <th class="py-3 px-4 font-medium">Ism</th>
+                        <th class="py-3 px-4 font-medium">Familiya</th>
+                        <th class="py-3 px-4 font-medium">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody" class="text-gray-200">
+                    <!-- Data will be appended here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/registration.js"></script>
+</body>
+</html>
